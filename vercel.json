@@ -1,0 +1,8 @@
+{
+  "buildCommand": "npm run generate:colors && NODE_ENV=production npm run build:all",
+  "outputDirectory": "packages/core/dist",
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}

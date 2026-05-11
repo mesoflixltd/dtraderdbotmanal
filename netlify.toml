@@ -1,0 +1,12 @@
+[build]
+  command = "npm run generate:colors && NODE_ENV=production npm run build:all"
+  publish = "packages/core/dist"
+
+[build.environment]
+  NODE_ENV = "production"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = false
