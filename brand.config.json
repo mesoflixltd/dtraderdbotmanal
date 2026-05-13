@@ -2,10 +2,10 @@
     "brand_name": "zullufx",
     "brand_logo": "brand/brand-logo.svg",
     "brand_logo_dark": "brand/brand-logo-dark.svg",
-    "brand_domain": "zullufx.co.ke",
+    "brand_domain": "zullu.co.ke",
     "brand_hostname": {
-        "staging": "staging.zullufx.co.ke",
-        "production": "zullufx.co.ke"
+        "staging": "staging.zullu.co.ke",
+        "production": "dtrader.zullu.co.ke"
     },
     "platform": {
         "name": "zullufx",
@@ -19,15 +19,15 @@
         "staging": "https://staging-home.deriv.com/dashboard/signup"
     },
     "deposit_url": {
-        "staging": "https://staging.zullufx.co.ke/transfer",
-        "production": "https://zullufx.co.ke/transfer"
+        "staging": "https://staging.zullu.co.ke/transfer",
+        "production": "https://dtrader.zullu.co.ke/transfer"
     },
     "auth": {
         "staging": "https://staging-auth.deriv.com",
         "production": "https://auth.deriv.com",
         "oauth_scopes": ["trade", "account_manage"],
-        "oauth_redirect_uri_staging": "https://staging.zullufx.co.ke",
-        "oauth_redirect_uri_production": "https://zullufx.co.ke",
+        "oauth_redirect_uri_staging": "https://staging.zullu.co.ke",
+        "oauth_redirect_uri_production": "https://dtrader.zullu.co.ke",
         "oauth_app_id": "92385"
     },
     "derivws": {

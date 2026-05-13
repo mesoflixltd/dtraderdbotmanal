@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { observer, useStore } from '@deriv/stores';
 import { useDevice } from '@deriv-com/ui';
 
-import { AccountActions } from 'App/Components/Layout/Header';
+import { AccountActions, MenuLinks } from 'App/Components/Layout/Header';
 import { AccountsInfoLoader } from 'App/Components/Layout/Header/Components/Preloader';
 import NewVersionNotification from 'App/Containers/new-version-notification';
 import BrandLogo from 'App/Components/Elements/BrandLogo';
@@ -44,22 +44,7 @@ const HeaderLegacy = observer(() => {
                     <BrandLogo height='28px' className='header__logo-img' />
                 </div>
 
-                <div className='header__custom-buttons'>
-                    <button 
-                        className='header__disclaimer-btn' 
-                        onClick={() => setIsDisclaimerOpen(true)}
-                        type='button'
-                    >
-                        <span>{localize('Disclaimer')}</span>
-                    </button>
-                    <button 
-                        className='header__bot-trading-btn' 
-                        onClick={() => window.open('https://zullufx.co.ke', '_blank', 'noopener,noreferrer')}
-                        type='button'
-                    >
-                        <span>{localize('Bot Trading')}</span>
-                    </button>
-                </div>
+                <MenuLinks onOpenDisclaimer={() => setIsDisclaimerOpen(true)} />
 
                 {is_logging_in ? (
                     <div id='dt_core_header_acc-info-preloader' className='acc-info__preloader'>

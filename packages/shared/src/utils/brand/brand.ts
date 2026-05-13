@@ -86,6 +86,11 @@ export const getDomainName = () => {
     // Split the hostname into parts
     const domainParts = hostname.split('.');
 
+    // Check for 3-part domains like zullu.co.ke
+    if (domainParts.length >= 3 && domainParts[domainParts.length - 2] === 'co') {
+        return `${domainParts[domainParts.length - 3]}.${domainParts[domainParts.length - 2]}.${domainParts[domainParts.length - 1]}`;
+    }
+
     // Ensure we have at least two parts (SLD and TLD)
     if (domainParts.length >= 2) {
         // Combine the SLD and TLD

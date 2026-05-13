@@ -3,7 +3,7 @@ import { Redirect, useHistory } from 'react-router-dom';
 import classNames from 'classnames';
 
 import { useMobileBridge } from '@deriv/api';
-import { Text, ToggleSwitch } from '@deriv/components';
+import { Modal, Text, ToggleSwitch } from '@deriv/components';
 import {
     StandaloneChevronLeftRegularIcon,
     StandaloneChevronRightRegularIcon,
@@ -16,6 +16,8 @@ import {
     StandaloneRightFromBracketRegularIcon,
     StandaloneSunBrightRegularIcon,
     StandaloneUserPlusRegularIcon,
+    StandaloneChartAreaRegularIcon,
+    StandaloneCircleExclamationRegularIcon,
 } from '@deriv/quill-icons';
 import { getHelpCentreUrl, getSignupUrl, isFeatureEnabled, routes } from '@deriv/shared';
 import { observer, useStore } from '@deriv/stores';
@@ -35,6 +37,7 @@ const MenuPage = observer(() => {
     const { localize } = useTranslations();
 
     const [show_language_selector, setShowLanguageSelector] = React.useState(false);
+    const [is_disclaimer_open, setIsDisclaimerOpen] = React.useState(false);
 
     const handleLogout = React.useCallback(async () => {
         try {
@@ -63,6 +66,29 @@ const MenuPage = observer(() => {
                 })}
             >
                 <div className='header__menu-mobile-body-wrapper'>
+                    {/* Platform Section */}
+                    <div className='header__menu-section'>
+                        <div className='header__menu-section-header'>
+                            <Text className='header__menu-section-title' size='xsm' weight='bold'>
+                                {localize('Platform')}
+                            </Text>
+                        </div>
+                        <div className='menu-page__item' onClick={() => window.open('https://dtrader.zullu.co.ke/', '_blank', 'noopener,noreferrer')}>
+                            <MenuLink
+                                icon={<StandaloneChartAreaRegularIcon iconSize='sm' />}
+                                text={localize('Bot Trading')}
+                                suffix_icon={<StandaloneChevronRightRegularIcon iconSize='sm' />}
+                            />
+                        </div>
+                        <div className='menu-page__item' onClick={() => setIsDisclaimerOpen(true)}>
+                            <MenuLink
+                                icon={<StandaloneCircleExclamationRegularIcon iconSize='sm' />}
+                                text={localize('Disclaimer')}
+                                suffix_icon={<StandaloneChevronRightRegularIcon iconSize='sm' />}
+                            />
+                        </div>
+                    </div>
+
                     {/* [AI] Reports Section — only for logged-in users */}
                     {is_logged_in && (
                         <div className='header__menu-section'>
@@ -222,6 +248,49 @@ const MenuPage = observer(() => {
                 </div>
                 <MobileLanguageMenu toggleDrawer={() => setShowLanguageSelector(false)} />
             </div>
+
+            <Modal
+                is_open={is_disclaimer_open}
+                small
+                has_close_icon
+                toggleModal={() => setIsDisclaimerOpen(false)}
+                title={localize('Risk Disclaimer')}
+            >
+                <div className='disclaimer-modal-content'>
+                    <p className='disclaimer-modal-text-lead'>
+                        {localize('Deriv offers complex derivatives, such as options and contracts for difference ("CFDs"). These products may not be suitable for all clients, and trading them puts you at risk.')}
+                    </p>
+                    
+                    <div className='disclaimer-modal-section'>
+                        <h4 className='disclaimer-modal-section-title'>{localize('Please ensure you understand these risks:')}</h4>
+                        <ul className='disclaimer-modal-list'>
+                            <li>
+                                <span className='disclaimer-modal-list-bullet'>•</span>
+                                <span className='disclaimer-modal-list-item-text'>{localize('You may lose some or all of your invested capital')}</span>
+                            </li>
+                            <li>
+                                <span className='disclaimer-modal-list-bullet'>•</span>
+                                <span className='disclaimer-modal-list-item-text'>{localize('Currency conversion affects your profit/loss')}</span>
+                            </li>
+                            <li>
+                                <span className='disclaimer-modal-list-bullet'>•</span>
+                                <span className='disclaimer-modal-list-item-text'>{localize('Markets can be volatile and unpredictable')}</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div className='disclaimer-modal-section disclaimer-modal-section--important'>
+                        <span className='disclaimer-modal-badge'>{localize('Important')}</span>
+                        <p className='disclaimer-modal-text-important'>
+                            {localize('Never trade with borrowed money or funds you cannot afford to lose.')}
+                        </p>
+                    </div>
+                    
+                    <p className='disclaimer-modal-text-footer'>
+                        {localize('By continuing, you confirm that you understand these risks and that you are aware that Deriv does not provide investment advice.')}
+                    </p>
+                </div>
+            </Modal>
         </div>
     );
 });
