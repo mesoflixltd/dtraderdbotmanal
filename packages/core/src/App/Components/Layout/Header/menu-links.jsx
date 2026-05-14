@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text } from '@deriv/components';
-import { LegacyReportsIcon, StandaloneCircleExclamationRegularIcon, StandaloneChartAreaRegularIcon } from '@deriv/quill-icons';
+import { LegacyReportsIcon, StandaloneCircleExclamationRegularIcon, StandaloneChartAreaRegularIcon, StandaloneHouseBlankRegularIcon } from '@deriv/quill-icons';
 import { routes } from '@deriv/shared';
 import { observer, useStore } from '@deriv/stores';
 import { useTranslations } from '@deriv-com/translations';
@@ -61,6 +61,12 @@ const MenuLinks = observer(({ is_traders_hub_routes = false, onOpenDisclaimer })
     return (
         <div key={`menu-links__${currentLang}`} className='header__menu-links'>
             {!is_traders_hub_routes && is_logged_in && <ReportTab />}
+            <MenuItems
+                id='dt_home_tab'
+                icon={<StandaloneHouseBlankRegularIcon className='header__icon' iconSize='xs' fill='var(--color-text-primary)' />}
+                text={localize('Home')}
+                onClick={() => window.open('https://zullu.co.ke/', '_blank', 'noopener,noreferrer')}
+            />
             <MenuItems
                 id='dt_bot_trading_tab'
                 icon={<StandaloneChartAreaRegularIcon className='header__icon' iconSize='xs' fill='var(--color-text-primary)' />}

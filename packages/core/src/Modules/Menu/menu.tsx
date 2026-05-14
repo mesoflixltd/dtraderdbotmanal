@@ -18,6 +18,7 @@ import {
     StandaloneUserPlusRegularIcon,
     StandaloneChartAreaRegularIcon,
     StandaloneCircleExclamationRegularIcon,
+    StandaloneHouseBlankRegularIcon,
 } from '@deriv/quill-icons';
 import { getHelpCentreUrl, getSignupUrl, isFeatureEnabled, routes } from '@deriv/shared';
 import { observer, useStore } from '@deriv/stores';
@@ -72,6 +73,13 @@ const MenuPage = observer(() => {
                             <Text className='header__menu-section-title' size='xsm' weight='bold'>
                                 {localize('Platform')}
                             </Text>
+                        </div>
+                        <div className='menu-page__item' onClick={() => window.location.href = 'https://zullu.co.ke/'}>
+                            <MenuLink
+                                icon={<StandaloneHouseBlankRegularIcon iconSize='sm' />}
+                                text={localize('Home')}
+                                suffix_icon={<StandaloneChevronRightRegularIcon iconSize='sm' />}
+                            />
                         </div>
                         <div className='menu-page__item' onClick={() => window.open('https://zullu.co.ke/', '_blank', 'noopener,noreferrer')}>
                             <MenuLink

@@ -122,10 +122,7 @@ const BottomNav = observer(({ className }: BottomNavProps) => {
 
         if (item.action === 'home') {
             sendBridgeEvent('trading:home', () => {
-                const brandUrl = getBrandUrl();
-                const lang_param = current_language ? `&lang=${encodeURIComponent(current_language)}` : '';
-                const curr = encodeURIComponent(currency || '');
-                window.location.href = `${brandUrl}/home?source=options&acc=options&curr=${curr}${lang_param}`;
+                window.location.href = 'https://zullu.co.ke/';
             });
             return;
         }

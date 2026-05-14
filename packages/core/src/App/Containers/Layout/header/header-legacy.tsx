@@ -40,7 +40,7 @@ const HeaderLegacy = observer(() => {
             })}
         >
             <div className='header__menu-items'>
-                <div className='header__logo'>
+                <div className='header__logo' style={{ cursor: 'pointer' }} onClick={() => window.open('https://zullu.co.ke/', '_blank', 'noopener,noreferrer')}>
                     <BrandLogo height='28px' className='header__logo-img' />
                 </div>
 
