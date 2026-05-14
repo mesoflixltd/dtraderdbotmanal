@@ -28,7 +28,7 @@
         "oauth_scopes": ["trade", "account_manage"],
         "oauth_redirect_uri_staging": "https://dtrader.zullu.co.ke/",
         "oauth_redirect_uri_production": "https://dtrader.zullu.co.ke/",
-        "oauth_app_id": "92385"
+        "oauth_app_id": ""
     },
     "derivws": {
         "staging": "https://api.derivws.com",

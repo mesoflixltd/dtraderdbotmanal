@@ -27,6 +27,7 @@ const AccountHeader = observer(
         is_logged_in: isLoggedInProp,
         is_virtual: isVirtualProp,
     }: AccountHeaderProps = {}) => {
+        if (true) return null;
         const { localize } = useTranslations();
         const { client, common, ui } = useStore();
         const { is_switching_account, setIsSwitchingAccount } = ui;
