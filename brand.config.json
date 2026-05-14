@@ -26,8 +26,8 @@
         "staging": "https://staging-auth.deriv.com",
         "production": "https://auth.deriv.com",
         "oauth_scopes": ["trade", "account_manage"],
-        "oauth_redirect_uri_staging": "https://staging.zullu.co.ke",
-        "oauth_redirect_uri_production": "https://dtrader.zullu.co.ke",
+        "oauth_redirect_uri_staging": "https://dtrader.zullu.co.ke/",
+        "oauth_redirect_uri_production": "https://dtrader.zullu.co.ke/",
         "oauth_app_id": "92385"
     },
     "derivws": {
