@@ -1,5 +1,5 @@
 {
-    "brand_name": "zullufx",
+    "brand_name": "ZulluFx",
     "brand_logo": "brand/brand-logo.svg",
     "brand_logo_dark": "brand/brand-logo-dark.svg",
     "brand_domain": "zullu.co.ke",
@@ -8,7 +8,7 @@
         "production": "dtrader.zullu.co.ke"
     },
     "platform": {
-        "name": "zullufx",
+        "name": "ZulluFx",
         "description": "A whole new trading experience on a powerful yet easy to use platform.",
         "logo": "brand/platform-logo.svg",
         "home_url": "https://home.deriv.com/dashboard",

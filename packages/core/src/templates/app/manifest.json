@@ -1,7 +1,7 @@
 {
-    "name": "Deriv",
-    "short_name": "Deriv",
-    "description": "Deriv gives everyone an easy way to participate in the financial markets.",
+    "name": "ZulluFx",
+    "short_name": "ZulluFx",
+    "description": "A whole new trading experience on a powerful yet easy to use platform.",
     "id": "/",
     "start_url": "{start_url_base}",
     "display": "standalone",

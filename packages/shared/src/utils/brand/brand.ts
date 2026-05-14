@@ -74,7 +74,7 @@ export const getAppId = (): number => {
     const app_id = (config_data as Record<string, unknown> & typeof config_data).app_id as
         | { staging: number; production: number }
         | undefined;
-    if (!app_id) return 16929;
+    if (!app_id) return 92385;
     return isProduction() ? app_id.production : app_id.staging;
 };
 // [/AI]
@@ -164,7 +164,7 @@ export const getAuthBaseUrl = (): string => {
 };
 
 export const getOAuthClientId = (): string => {
-    const client_id = process.env.OAUTH_CLIENT_ID;
+    const client_id = process.env.OAUTH_CLIENT_ID || '33geMCp1NWqmC5eEJ0w3Q';
     if (!client_id)
         throw new Error(
             'OAUTH_CLIENT_ID is not set. Add it to your .env file for local dev or GitHub Environment secrets for CI.'
