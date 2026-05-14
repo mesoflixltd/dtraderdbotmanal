@@ -343,13 +343,12 @@ export default class ClientStore extends BaseStore {
                     BinarySocket.setWSUrl(null);
                     BinarySocket.closeAndOpenNewConnection();
 
-                    BinarySocket.send({ authorize: token }).then(response => {
-                        import('Services/socket-general').then(({ default: BinarySocketGeneral }) => {
-                            if (response.authorize) {
-                                BinarySocketGeneral.authorizeAccount(response);
-                            }
-                        });
-                    });
+                    const response = await BinarySocket.send({ authorize: token });
+                    if (response?.authorize) {
+                        const { default: BinarySocketGeneral } = await import('Services/socket-general');
+                        BinarySocketGeneral.authorizeAccount(response);
+                        BinarySocket.subscribeBalance();
+                    }
                 } else {
                     // Step 5 of OAuth flow: fetch accounts → pick active account → get OTP WS URL.
                     const accounts = await fetchAccounts();
@@ -631,6 +630,7 @@ export default class ClientStore extends BaseStore {
                 import('Services/socket-general').then(({ default: BinarySocketGeneral }) => {
                     if (response.authorize) {
                         BinarySocketGeneral.authorizeAccount(response);
+                        BinarySocket.subscribeBalance();
                     }
                 });
             });

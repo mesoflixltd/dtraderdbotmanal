@@ -23,6 +23,17 @@ export const useDerivativesAccount = (loginid: string | undefined, enabled: bool
     return useQuery<TDerivativesAccountResponse, Error>(
         ['derivatives', 'account', loginid], // Query key includes loginid for cache invalidation on account switch
         () => {
+            const auth_info = JSON.parse(sessionStorage.getItem('auth_info') || 'null');
+            const token = auth_info?.access_token || '';
+            if (token.startsWith('a1-')) {
+                const stored_accounts = JSON.parse(localStorage.getItem('client_accounts') || '[]');
+                const current = JSON.parse(localStorage.getItem('current_account') || 'null');
+                const enriched = stored_accounts.map((acc: any) => ({
+                    ...acc,
+                    balance: acc.account_id === loginid ? (current?.balance ?? 0) : 0,
+                }));
+                return Promise.resolve({ data: enriched } as TDerivativesAccountResponse);
+            }
             return fetchREST<TDerivativesAccountResponse>(`/trading/v1/options/accounts`);
         }, // Query function
         {
