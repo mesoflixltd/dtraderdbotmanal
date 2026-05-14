@@ -59,7 +59,7 @@ const initStore = async notification_messages => {
     setStorageEvents(root_store);
 
     NetworkMonitor.init(root_store);
-    root_store.client.init();
+    await root_store.client.init();
     root_store.common.init();
     root_store.ui.init(notification_messages);
 

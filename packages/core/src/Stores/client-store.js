@@ -375,7 +375,11 @@ export default class ClientStore extends BaseStore {
                 // eslint-disable-next-line no-console
                 console.error('[Auth] Account init failed:', error);
                 clearTokens();
+            } finally {
+                this.setIsLoggingIn(false);
             }
+        } else {
+            this.setIsLoggingIn(false);
         }
 
         // Handle special action parameters and user_id for both logged-in and logged-out states
