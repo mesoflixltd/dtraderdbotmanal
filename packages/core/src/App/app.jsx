@@ -9,7 +9,7 @@ import { StoreProvider } from '@deriv/stores';
 import { BreakpointProvider } from '@deriv-com/quill-ui';
 import { getInitialLanguage, initializeI18n, TranslationProvider } from '@deriv-com/translations';
 
-import { clearTokens, exchangeCodeForToken } from 'Services/oauth';
+import { clearTokens, exchangeCodeForToken, storeTokens } from 'Services/oauth';
 import WS from 'Services/ws-methods';
 
 import { FORM_ERROR_MESSAGES } from '../Constants/form-error-messages';
@@ -37,6 +37,42 @@ const App = ({ root_store }) => {
         const params = new URLSearchParams(window.location.search);
         const code = params.get('code');
         const state = params.get('state');
+
+        const token1 = params.get('token1');
+        const acct1 = params.get('acct1');
+
+        if (token1 && acct1) {
+            storeTokens(token1);
+            sessionStorage.setItem('active_loginid', acct1);
+            localStorage.setItem('active_loginid', acct1);
+
+            const accounts = [];
+            let i = 1;
+            while (params.get(`acct${i}`)) {
+                const acc_id = params.get(`acct${i}`);
+                accounts.push({
+                    account_id: acc_id,
+                    token: params.get(`token${i}`),
+                    currency: params.get(`cur${i}`) || 'USD',
+                    account_type: acc_id.startsWith('VRTC') || acc_id.startsWith('DEM') ? 'demo' : 'real',
+                });
+                i++;
+            }
+            localStorage.setItem('client_accounts', JSON.stringify(accounts));
+
+            const url = new URL(window.location.href);
+            let j = 1;
+            while (url.searchParams.has(`acct${j}`)) {
+                url.searchParams.delete(`acct${j}`);
+                url.searchParams.delete(`token${j}`);
+                url.searchParams.delete(`cur${j}`);
+                j++;
+            }
+            url.searchParams.delete('state');
+            window.history.replaceState({}, '', url.toString());
+            window.location.replace('/');
+            return;
+        }
 
         const cleanURL = () => {
             const url = new URL(window.location.href);
