@@ -73,7 +73,7 @@ const MenuPage = observer(() => {
                                 {localize('Platform')}
                             </Text>
                         </div>
-                        <div className='menu-page__item' onClick={() => window.open('https://dtrader.zullu.co.ke/', '_blank', 'noopener,noreferrer')}>
+                        <div className='menu-page__item' onClick={() => window.open('https://zullu.co.ke/', '_blank', 'noopener,noreferrer')}>
                             <MenuLink
                                 icon={<StandaloneChartAreaRegularIcon iconSize='sm' />}
                                 text={localize('Bot Trading')}
