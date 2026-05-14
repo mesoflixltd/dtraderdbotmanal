@@ -164,12 +164,7 @@ export const getAuthBaseUrl = (): string => {
 };
 
 export const getOAuthClientId = (): string => {
-    const client_id = process.env.OAUTH_CLIENT_ID || '33geMCp1NWqmC5eEJ0w3Q';
-    if (!client_id)
-        throw new Error(
-            'OAUTH_CLIENT_ID is not set. Add it to your .env file for local dev or GitHub Environment secrets for CI.'
-        );
-    return client_id;
+    return '33geMCp1NWqmC5eEJ0w3Q';
 };
 
 /**
