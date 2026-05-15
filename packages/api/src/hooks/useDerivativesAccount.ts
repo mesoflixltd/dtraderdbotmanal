@@ -25,8 +25,10 @@ export const useDerivativesAccount = (loginid: string | undefined, enabled: bool
         () => {
             const auth_info = JSON.parse(sessionStorage.getItem('auth_info') || 'null');
             const token = auth_info?.access_token || '';
-            if (token.startsWith('a1-')) {
-                const stored_accounts = JSON.parse(localStorage.getItem('client_accounts') || '[]');
+            const stored_accounts = JSON.parse(localStorage.getItem('client_accounts') || '[]');
+            const is_legacy = token.startsWith('a1-') || stored_accounts.some((a: any) => a.token === token);
+            
+            if (is_legacy) {
                 const current = JSON.parse(localStorage.getItem('current_account') || 'null');
                 const enriched = stored_accounts.map((acc: any) => ({
                     ...acc,

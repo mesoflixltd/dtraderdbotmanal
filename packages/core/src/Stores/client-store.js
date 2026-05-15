@@ -329,8 +329,10 @@ export default class ClientStore extends BaseStore {
 
             try {
                 const token = getStoredToken();
-                if (token.startsWith('a1-')) {
-                    const stored_accounts = JSON.parse(localStorage.getItem('client_accounts') || '[]');
+                const stored_accounts = JSON.parse(localStorage.getItem('client_accounts') || '[]');
+                const is_legacy = token.startsWith('a1-') || stored_accounts.some(a => a.token === token);
+
+                if (is_legacy) {
                     const active_id = sessionStorage.getItem('active_loginid') || localStorage.getItem('active_loginid') || stored_accounts[0]?.account_id;
                     const active_account = stored_accounts.find(a => a.account_id === active_id) || stored_accounts[0];
 
@@ -622,8 +624,11 @@ export default class ClientStore extends BaseStore {
         // Clear contract markers to prevent showing previous account's contracts on chart
         this.root_store.contract_trade.clearContracts();
 
-        if (getStoredToken()?.startsWith('a1-')) {
-            const stored_accounts = JSON.parse(localStorage.getItem('client_accounts') || '[]');
+        const stored_token = getStoredToken();
+        const stored_accounts = JSON.parse(localStorage.getItem('client_accounts') || '[]');
+        const is_legacy = stored_token && (stored_token.startsWith('a1-') || stored_accounts.some(a => a.token === stored_token));
+
+        if (is_legacy) {
             const target = stored_accounts.find(a => a.account_id === account_id);
             if (target && target.token) {
                 storeTokens(target.token);
