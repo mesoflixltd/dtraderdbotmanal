@@ -565,8 +565,8 @@ const proxyForAuthorize = obj =>
                 if (current_ws_url && current_ws_url !== BinarySocketBase.getPublicWSUrl?.()) {
                     return BinarySocketBase?.wait('balance')?.then(() => target[field](...args));
                 }
-                // Not authenticated — execute without waiting
-                return target[field](...args);
+                // Legacy authenticated connection — wait for authorize
+                return BinarySocketBase?.wait('authorize')?.then(() => target[field](...args));
             };
         },
     });
