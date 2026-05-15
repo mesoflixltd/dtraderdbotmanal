@@ -115,6 +115,11 @@ const copyConfig = base => {
             noErrorOnMissing: false,
         },
         // [/AI]
+        {
+            from: path.resolve(__dirname, '../src/public/translations'),
+            to: 'translations',
+            noErrorOnMissing: true,
+        },
     ];
 
     return {
