@@ -74,7 +74,7 @@ export const getAppId = (): number => {
     const app_id = (config_data as Record<string, unknown> & typeof config_data).app_id as
         | { staging: number; production: number }
         | undefined;
-    if (!app_id) return 92385;
+    if (!app_id) return 121533;
     return isProduction() ? app_id.production : app_id.staging;
 };
 // [/AI]
@@ -86,7 +86,7 @@ export const getDomainName = () => {
     // Split the hostname into parts
     const domainParts = hostname.split('.');
 
-    // Check for 3-part domains like zullu.co.ke
+    // Check for 3-part domains like dtraderdbot.com
     if (domainParts.length >= 3 && domainParts[domainParts.length - 2] === 'co') {
         return `${domainParts[domainParts.length - 3]}.${domainParts[domainParts.length - 2]}.${domainParts[domainParts.length - 1]}`;
     }
@@ -164,7 +164,7 @@ export const getAuthBaseUrl = (): string => {
 };
 
 export const getOAuthClientId = (): string => {
-    return '33geMCp1NWqmC5eEJ0w3Q';
+    return '33j47k0brbH3WuFrn4Ady';
 };
 
 /**

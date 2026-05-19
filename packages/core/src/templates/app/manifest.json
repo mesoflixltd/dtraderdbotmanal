@@ -1,6 +1,6 @@
 {
-    "name": "ZulluFx",
-    "short_name": "ZulluFx",
+    "name": "dtraderdbot",
+    "short_name": "dtraderdbot",
     "description": "A whole new trading experience on a powerful yet easy to use platform.",
     "id": "/",
     "start_url": "{start_url_base}",

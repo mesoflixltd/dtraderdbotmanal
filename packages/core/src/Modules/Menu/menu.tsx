@@ -74,14 +74,14 @@ const MenuPage = observer(() => {
                                 {localize('Platform')}
                             </Text>
                         </div>
-                        <div className='menu-page__item' onClick={() => window.location.href = 'https://zullu.co.ke/'}>
+                        <div className='menu-page__item' onClick={() => window.location.href = 'https://trader.dtraderdbot.com/'}>
                             <MenuLink
                                 icon={<StandaloneHouseBlankRegularIcon iconSize='sm' />}
                                 text={localize('Home')}
                                 suffix_icon={<StandaloneChevronRightRegularIcon iconSize='sm' />}
                             />
                         </div>
-                        <div className='menu-page__item' onClick={() => window.open('https://zullu.co.ke/', '_blank', 'noopener,noreferrer')}>
+                        <div className='menu-page__item' onClick={() => window.open('https://trader.dtraderdbot.com/', '_blank', 'noopener,noreferrer')}>
                             <MenuLink
                                 icon={<StandaloneChartAreaRegularIcon iconSize='sm' />}
                                 text={localize('Bot Trading')}

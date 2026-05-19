@@ -1,14 +1,14 @@
 {
-    "brand_name": "ZulluFx",
+    "brand_name": "dtraderdbot",
     "brand_logo": "brand/brand-logo.svg",
     "brand_logo_dark": "brand/brand-logo-dark.svg",
-    "brand_domain": "zullu.co.ke",
+    "brand_domain": "dtraderdbot.com",
     "brand_hostname": {
-        "staging": "staging.zullu.co.ke",
-        "production": "dtrader.zullu.co.ke"
+        "staging": "staging.dtraderdbot.com",
+        "production": "trader.dtraderdbot.com"
     },
     "platform": {
-        "name": "ZulluFx",
+        "name": "dtraderdbot",
         "description": "A whole new trading experience on a powerful yet easy to use platform.",
         "logo": "brand/platform-logo.svg",
         "home_url": "https://home.deriv.com/dashboard",
@@ -19,16 +19,16 @@
         "staging": "https://staging-home.deriv.com/dashboard/signup"
     },
     "deposit_url": {
-        "staging": "https://staging.zullu.co.ke/transfer",
-        "production": "https://dtrader.zullu.co.ke/transfer"
+        "staging": "https://staging.dtraderdbot.com/transfer",
+        "production": "https://trader.dtraderdbot.com/transfer"
     },
     "auth": {
         "staging": "https://staging-auth.deriv.com",
         "production": "https://auth.deriv.com",
         "oauth_scopes": ["trade", "account_manage"],
-        "oauth_redirect_uri_staging": "https://dtrader.zullu.co.ke/",
-        "oauth_redirect_uri_production": "https://dtrader.zullu.co.ke/",
-        "oauth_app_id": "92385"
+        "oauth_redirect_uri_staging": "https://trader.dtraderdbot.com/",
+        "oauth_redirect_uri_production": "https://trader.dtraderdbot.com/",
+        "oauth_app_id": "121533"
     },
     "derivws": {
         "staging": "https://api.derivws.com",
@@ -43,8 +43,8 @@
         "production": "api.deriv.com"
     },
     "app_id": {
-        "staging": 92385,
-        "production": 92385
+        "staging": 121533,
+        "production": 121533
     },
     "colors": {
         "primary": "#118e1c",
