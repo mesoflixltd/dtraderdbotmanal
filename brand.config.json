@@ -43,8 +43,8 @@
         "production": "api.deriv.com"
     },
     "app_id": {
-        "staging": 121533,
-        "production": 121533
+        "staging": 118438,
+        "production": 118438
     },
     "colors": {
         "primary": "#118e1c",

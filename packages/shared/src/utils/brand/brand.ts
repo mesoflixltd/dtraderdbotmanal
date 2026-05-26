@@ -74,7 +74,7 @@ export const getAppId = (): number => {
     const app_id = (config_data as Record<string, unknown> & typeof config_data).app_id as
         | { staging: number; production: number }
         | undefined;
-    if (!app_id) return 121533;
+    if (!app_id) return 118438;
     return isProduction() ? app_id.production : app_id.staging;
 };
 // [/AI]
