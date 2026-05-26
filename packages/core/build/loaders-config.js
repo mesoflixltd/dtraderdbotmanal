@@ -113,6 +113,7 @@ const css_loaders = [
             sourceMap: !IS_RELEASE,
             sassOptions: {
                 outputStyle: 'expanded',
+                silenceDeprecations: ['legacy-js-api', 'import', 'global-builtin'],
             },
         },
     },

@@ -100,6 +100,9 @@ const css_loaders = [
         loader: 'sass-loader',
         options: {
             sourceMap: !IS_RELEASE,
+            sassOptions: {
+                silenceDeprecations: ['legacy-js-api', 'import', 'global-builtin'],
+            },
         },
     },
     {

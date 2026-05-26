@@ -44,6 +44,9 @@ module.exports = function () {
                             loader: 'sass-loader',
                             options: {
                                 sourceMap: true,
+                                sassOptions: {
+                                    silenceDeprecations: ['legacy-js-api', 'import', 'global-builtin'],
+                                },
                             },
                         },
                         {
