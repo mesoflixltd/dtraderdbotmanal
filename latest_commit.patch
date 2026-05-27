@@ -1,0 +1,110 @@
+commit b2dbdb197fede15deadafb1b50029bfcf20199c3
+Author: lemic murimi <lemicmurimivennry@gmail.com>
+Date:   Wed May 27 11:06:58 2026 +0300
+
+    feat: add BrandLogo component and implement WebSocket connection utility with PKCE support
+
+diff --git a/brand.config.json b/brand.config.json
+index 460167b..2cfa722 100644
+--- a/brand.config.json
++++ b/brand.config.json
+@@ -1,11 +1,11 @@
+ {
+-    "brand_name": "Zullufx",
+-    "brand_domain": "zullu.co.ke",
++    "brand_name": "Zullu.co.ke",
++    "brand_domain": "trader.zullu.co.ke",
+     "brand_hostname": {
+-        "staging": "zullu.co.ke",
+-        "production": "zullu.co.ke"
++        "staging": "trader.zullu.co.ke",
++        "production": "trader.zullu.co.ke"
+     },
+-    "domain_name": "zullu.co.ke",
++    "domain_name": "trader.zullu.co.ke",
+     "main_branch": "master",
+     "colors": {
+         "primary": "#e21e26",
+@@ -59,10 +59,10 @@
+         "css_variable_prefix": "--brand"
+     },
+     "platform": {
+-        "name": "Zullufx",
+-        "app_id": "92384",
+-        "client_id": "33f2Crptq49vKiVjI3HJv",
+-        "oauth_redirect_uri": "https://zullu.co.ke/",
++        "name": "Zullu.co.ke",
++        "app_id": "92385",
++        "client_id": "33geMCp1NWqmC5eEJ0w3Q",
++        "oauth_redirect_uri": "https://trader.zullu.co.ke/",
+         "logo": {
+             "type": "component",
+             "component_name": "BrandLogo",
+@@ -77,10 +77,10 @@
+         },
+         "hostname": {
+             "production": {
+-                "com": "zullu.co.ke"
++                "com": "trader.zullu.co.ke"
+             },
+             "staging": {
+-                "com": "zullu.co.ke"
++                "com": "trader.zullu.co.ke"
+             }
+         },
+         "auth2_url": {
+diff --git a/src/components/layout/app-logo/BrandLogo.tsx b/src/components/layout/app-logo/BrandLogo.tsx
+index 3b1f400..88db6bd 100644
+--- a/src/components/layout/app-logo/BrandLogo.tsx
++++ b/src/components/layout/app-logo/BrandLogo.tsx
+@@ -40,8 +40,8 @@ export const BrandLogo = ({
+                 </svg>
+             </div>
+             <div style={{ display: 'flex', alignItems: 'center' }}>
+-                <span style={{ color: 'var(--text-prominent)' }}>zullu</span>
+-                <span style={{ color: '#e21e26' }}>.co.ke</span>
++                <span style={{ color: '#e21e26' }}>Zullu</span>
++                <span style={{ color: '#000000' }}>.co.ke</span>
+             </div>
+         </div>
+     );
+diff --git a/src/components/shared/utils/config/config.ts b/src/components/shared/utils/config/config.ts
+index e4a3f4d..80d6abf 100644
+--- a/src/components/shared/utils/config/config.ts
++++ b/src/components/shared/utils/config/config.ts
+@@ -98,7 +98,7 @@ export const getSocketURL = async (): Promise<string> => {
+             return wsUrl;
+         }
+ 
+-        const appId = process.env.APP_ID || brandConfig.platform.app_id || '92384';
++        const appId = process.env.APP_ID || brandConfig.platform.app_id || '92385';
+         if (!wsUrl.includes('app_id=')) {
+             wsUrl += `${wsUrl.includes('?') ? '&' : '?'}app_id=${appId}`;
+         }
+@@ -108,7 +108,7 @@ export const getSocketURL = async (): Promise<string> => {
+     try {
+         const isLegacy = localStorage.getItem('is_legacy_account') === 'true';
+         if (isLegacy) {
+-            const appId = process.env.APP_ID || brandConfig.platform.app_id || '92384';
++            const appId = process.env.APP_ID || brandConfig.platform.app_id || '92385';
+             return `wss://ws.derivws.com/websockets/v3?app_id=${appId}`;
+         }
+ 
+@@ -122,7 +122,7 @@ export const getSocketURL = async (): Promise<string> => {
+                 const isReachable = await testConnection(defaultUrl, 1000);
+                 if (!isReachable) {
+                     console.warn('[DerivWS] Staging API is unreachable. Falling back to stable production gateway.');
+-                    const appId = process.env.APP_ID || brandConfig.platform.app_id || '92384';
++                    const appId = process.env.APP_ID || brandConfig.platform.app_id || '92385';
+                     return `wss://ws.derivws.com/websockets/v3?app_id=${appId}`;
+                 }
+             }
+@@ -134,7 +134,7 @@ export const getSocketURL = async (): Promise<string> => {
+         return wsUrl;
+     } catch (error) {
+         console.error('[DerivWS] Error in getSocketURL, falling back to stable production gateway:', error);
+-        const appId = process.env.APP_ID || brandConfig.platform.app_id || '92384';
++        const appId = process.env.APP_ID || brandConfig.platform.app_id || '92385';
+         return `wss://ws.derivws.com/websockets/v3?app_id=${appId}`;
+     }
+ };

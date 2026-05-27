@@ -11,9 +11,12 @@ type TBrandLogoProps = {
 };
 
 const BrandLogo = observer(({ className, width, height }: TBrandLogoProps) => {
-    const { ui } = useStore();
-    const src = ui.is_dark_mode_on ? getBrandLogoDark() : getBrandLogo();
-    return <img src={`/${src}`} alt={getBrandName()} className={className} width={width} height={height} />;
+    return (
+        <div style={{ display: 'flex', alignItems: 'center' }} className={className}>
+            <span style={{ color: '#e21e26', fontSize: '1.2rem', fontWeight: 'bold' }}>Zullu</span>
+            <span style={{ color: '#000000', fontSize: '1.2rem', fontWeight: 'bold' }}>.co.ke</span>
+        </div>
+    );
 });
 
 BrandLogo.displayName = 'BrandLogo';
