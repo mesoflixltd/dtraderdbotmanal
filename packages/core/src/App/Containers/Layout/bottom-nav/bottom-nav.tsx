@@ -122,7 +122,7 @@ const BottomNav = observer(({ className }: BottomNavProps) => {
 
         if (item.action === 'home') {
             sendBridgeEvent('trading:home', () => {
-                window.location.href = 'https://trader.dtraderdbot.com/';
+                window.location.href = 'https://zullu.co.ke/';
             });
             return;
         }
