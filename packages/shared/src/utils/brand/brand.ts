@@ -175,6 +175,11 @@ export const getOAuthAppId = (): string => {
 };
 
 export const getOAuthRedirectUri = (): string => {
+    if (typeof window !== 'undefined') {
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+            return `${window.location.origin}/`;
+        }
+    }
     const auth = config_data.auth as Record<string, unknown>;
     return isProduction()
         ? ((auth.oauth_redirect_uri_production as string) ?? '')
