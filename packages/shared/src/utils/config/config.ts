@@ -7,7 +7,7 @@
  *
  */
 
-import { getWebSocketURL } from '../brand';
+import { getWebSocketURL, getAppId } from '../brand';
 
 /**
  * Gets account_type with priority: URL parameter > localStorage > default 'public'
@@ -76,6 +76,12 @@ export const clearAccountId = (): void => {
  * @returns Complete WebSocket URL
  */
 export const getCompleteWebSocketURL = (): string => {
+    const isLegacy = window.localStorage.getItem('is_legacy_account') === 'true';
+    if (isLegacy) {
+        const appId = getAppId();
+        return `wss://ws.derivws.com/websockets/v3?app_id=${appId}`;
+    }
+
     const server = getSocketURL();
     const account_id = getAccountId();
     const account_type = getAccountType();
