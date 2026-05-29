@@ -230,7 +230,7 @@ export const createProposalRequestForContract = (store: TTradeStore, type_of_con
         basis: store.basis,
         contract_type: type_of_contract,
         currency: store.currency,
-        underlying_symbol: store.symbol,
+        symbol: store.symbol,
         ...(store.start_date && store.start_time && { date_start: convertToUnix(store.start_date, store.start_time) }),
         ...getDurationParams(),
         ...((store.barrier_count > 0 || store.form_components.indexOf('last_digit') !== -1) &&

@@ -18,7 +18,9 @@ const MarketSelector = observer(() => {
     const { addSnackbar } = useSnackbar();
     const { trade_types } = useContractsFor();
 
-    const currentSymbol = activeSymbols.find(symbol_info => symbol_info.underlying_symbol === storeSymbol);
+    const currentSymbol = activeSymbols.find(
+        (symbol_info: any) => symbol_info.underlying_symbol === storeSymbol || symbol_info.symbol === storeSymbol
+    );
 
     const contract_name = trade_types?.find((item: TContractType) => item.value === contract_type)?.text;
 
@@ -156,7 +158,7 @@ const MarketSelector = observer(() => {
                     <SymbolIconsMapper symbol={storeSymbol} />
                     <div className='market-selector-info'>
                         <div className='market-selector-info__label'>
-                            <Text bold>{getSymbolDisplayName(currentSymbol?.underlying_symbol || '')}</Text>
+                            <Text bold>{getSymbolDisplayName(currentSymbol?.underlying_symbol || currentSymbol?.symbol || '')}</Text>
                             {!currentSymbol?.exchange_is_open && (
                                 <Tag
                                     label={<Localize key='closed' i18n_default_text='CLOSED' />}
