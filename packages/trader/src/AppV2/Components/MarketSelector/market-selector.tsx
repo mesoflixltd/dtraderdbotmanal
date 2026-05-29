@@ -158,7 +158,7 @@ const MarketSelector = observer(() => {
                     <SymbolIconsMapper symbol={storeSymbol} />
                     <div className='market-selector-info'>
                         <div className='market-selector-info__label'>
-                            <Text bold>{getSymbolDisplayName(currentSymbol?.underlying_symbol || currentSymbol?.symbol || '')}</Text>
+                            <Text bold>{getSymbolDisplayName(currentSymbol?.underlying_symbol || (currentSymbol as any)?.symbol || '')}</Text>
                             {!currentSymbol?.exchange_is_open && (
                                 <Tag
                                     label={<Localize key='closed' i18n_default_text='CLOSED' />}
