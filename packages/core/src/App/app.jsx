@@ -45,6 +45,7 @@ const App = ({ root_store }) => {
             storeTokens(token1);
             sessionStorage.setItem('active_loginid', acct1);
             localStorage.setItem('active_loginid', acct1);
+            localStorage.setItem('is_legacy_account', 'true');
 
             const accounts = [];
             let i = 1;
@@ -97,6 +98,7 @@ const App = ({ root_store }) => {
 
         exchangeCodeForToken(code)
             .then(() => {
+                localStorage.removeItem('is_legacy_account');
                 // Token is now in sessionStorage. Reload to /  so initStore
                 // picks it up on fresh boot — avoids the race where onClientInit
                 // already ran before the token exchange completed.

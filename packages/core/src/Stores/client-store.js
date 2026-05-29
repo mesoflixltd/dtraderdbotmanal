@@ -552,6 +552,7 @@ export default class ClientStore extends BaseStore {
         sessionStorage.removeItem('active_loginid');
         localStorage.setItem('active_user_id', this.user_id);
         localStorage.setItem(storage_key, JSON.stringify(this.current_account));
+        localStorage.removeItem('is_legacy_account');
 
         // Clear OAuth tokens and reset WS to public endpoint
         clearTokens();
