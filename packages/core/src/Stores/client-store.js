@@ -17,7 +17,7 @@ import { getInitialLanguage, localize } from '@deriv-com/translations';
 
 import { requestRestLogout, WS } from 'Services';
 import { fetchAccounts, fetchOTP } from '../Services/accounts-api';
-import { clearTokens, generateOAuthURL, getStoredToken } from '../Services/oauth';
+import { clearTokens, generateOAuthURL, getStoredToken, storeTokens } from '../Services/oauth';
 
 import { getClientAccountType } from './Helpers/client';
 import { buildCurrenciesList } from './Modules/Trading/Helpers/currency';
