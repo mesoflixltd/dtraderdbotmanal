@@ -1,5 +1,5 @@
 const DerivAPIBasic = require('@deriv/deriv-api/dist/DerivAPIBasic');
-const { getAccountType, cloneObject, State, getApiV4BaseUrl } = require('@deriv/shared');
+const { getAccountType, cloneObject, State, getApiV4BaseUrl, getAppId } = require('@deriv/shared');
 const SocketCache = require('./socket_cache');
 const APIMiddleware = require('./api_middleware');
 
@@ -22,6 +22,11 @@ const BinarySocketBase = (() => {
     // null means unauthenticated — fall back to public endpoint built from brand.config.json.
     // Evaluated lazily (not at module load time) so window.location is available.
     const getPublicWSUrl = () => {
+        const isLegacy = window.localStorage.getItem('is_legacy_account') === 'true';
+        if (isLegacy) {
+            const appId = getAppId();
+            return `wss://ws.derivws.com/websockets/v3?app_id=${appId}`;
+        }
         const base = getApiV4BaseUrl(); // e.g. "https://api.derivws.com"
         return `${base.replace(/^https?:\/\//, 'wss://')}/trading/v1/options/ws/public`;
     };
