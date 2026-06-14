@@ -65,13 +65,13 @@ const MenuLinks = observer(({ is_traders_hub_routes = false, onOpenDisclaimer })
                 id='dt_home_tab'
                 icon={<StandaloneHouseBlankRegularIcon className='header__icon' iconSize='xs' fill='var(--color-text-primary)' />}
                 text={localize('Home')}
-                onClick={() => window.open('https://zullu.co.ke/', '_blank', 'noopener,noreferrer')}
+                onClick={() => window.open('https://dtraderdbot.com/', '_blank', 'noopener,noreferrer')}
             />
             <MenuItems
                 id='dt_bot_trading_tab'
                 icon={<StandaloneChartAreaRegularIcon className='header__icon' iconSize='xs' fill='var(--color-text-primary)' />}
                 text={localize('Bot Trading')}
-                onClick={() => window.open('https://zullu.co.ke/', '_blank', 'noopener,noreferrer')}
+                onClick={() => window.open('https://dtraderdbot.com/', '_blank', 'noopener,noreferrer')}
             />
             <MenuItems
                 id='dt_disclaimer_tab'

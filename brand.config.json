@@ -1,17 +1,17 @@
 {
-    "brand_name": "Zullu.co.ke",
+    "brand_name": "dtraderdbot.com",
     "brand_logo": "brand/brand-logo.svg",
     "brand_logo_dark": "brand/brand-logo-dark.svg",
-    "brand_domain": "trader.zullu.co.ke",
+    "brand_domain": "trader.dtraderdbot.com",
     "brand_hostname": {
-        "staging": "trader.zullu.co.ke",
-        "production": "trader.zullu.co.ke"
+        "staging": "trader.dtraderdbot.com",
+        "production": "trader.dtraderdbot.com"
     },
     "platform": {
-        "name": "Zullu.co.ke",
+        "name": "dtraderdbot.com",
         "description": "A whole new trading experience on a powerful yet easy to use platform.",
         "logo": "brand/platform-logo.svg",
-        "home_url": "https://zullu.co.ke/",
+        "home_url": "https://dtraderdbot.com/",
         "help_centre_url": "https://trade.deriv.com/help-centre"
     },
     "signup_url": {
@@ -19,16 +19,16 @@
         "staging": "https://staging-home.deriv.com/dashboard/signup"
     },
     "deposit_url": {
-        "staging": "https://trader.zullu.co.ke/transfer",
-        "production": "https://trader.zullu.co.ke/transfer"
+        "staging": "https://trader.dtraderdbot.com/transfer",
+        "production": "https://trader.dtraderdbot.com/transfer"
     },
     "auth": {
         "staging": "https://staging-auth.deriv.com",
         "production": "https://auth.deriv.com",
         "oauth_scopes": ["trade", "account_manage"],
-        "oauth_redirect_uri_staging": "https://trader.zullu.co.ke/",
-        "oauth_redirect_uri_production": "https://trader.zullu.co.ke/",
-        "oauth_app_id": "92385"
+        "oauth_redirect_uri_staging": "https://trader.dtraderdbot.com/",
+        "oauth_redirect_uri_production": "https://trader.dtraderdbot.com/",
+        "oauth_app_id": "33y7cgZg9JxO4scBVRP0I"
     },
     "derivws": {
         "staging": "https://api.derivws.com",
@@ -43,8 +43,8 @@
         "production": "api.deriv.com"
     },
     "app_id": {
-        "staging": 92385,
-        "production": 92385
+        "staging": 118438,
+        "production": 118438
     },
     "colors": {
         "primary": "#118e1c",
