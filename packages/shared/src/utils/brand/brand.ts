@@ -164,7 +164,7 @@ export const getAuthBaseUrl = (): string => {
 };
 
 export const getOAuthClientId = (): string => {
-    return '33geMCp1NWqmC5eEJ0w3Q';
+    return ((config_data.auth as Record<string, unknown>).oauth_app_id as string) ?? '';
 };
 
 /**
