@@ -28,7 +28,8 @@
         "oauth_scopes": ["trade", "account_manage"],
         "oauth_redirect_uri_staging": "https://trader.dtraderdbot.com/",
         "oauth_redirect_uri_production": "https://trader.dtraderdbot.com/",
-        "oauth_app_id": "33y7cgZg9JxO4scBVRP0I"
+        "oauth_app_id": "34d9nwiSR7YqdcG4P7S6Q",
+        "client_id": "34d9nwiSR7YqdcG4P7S6Q"
     },
     "derivws": {
         "staging": "https://api.derivws.com",

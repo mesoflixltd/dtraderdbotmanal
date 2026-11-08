@@ -164,14 +164,26 @@ export const getAuthBaseUrl = (): string => {
 };
 
 export const getOAuthClientId = (): string => {
-    return ((config_data.auth as Record<string, unknown>).oauth_app_id as string) ?? '';
+    const auth = (config_data.auth as Record<string, unknown>) ?? {};
+    return (
+        (process.env.OAUTH_CLIENT_ID as string) ||
+        (auth.client_id as string) ||
+        (auth.oauth_app_id as string) ||
+        ''
+    );
 };
 
 /**
  * Gets the OAuth2 redirect URI for the current environment
  */
 export const getOAuthAppId = (): string => {
-    return ((config_data.auth as Record<string, unknown>).oauth_app_id as string) ?? '';
+    const auth = (config_data.auth as Record<string, unknown>) ?? {};
+    return (
+        (process.env.OAUTH_CLIENT_ID as string) ||
+        (auth.oauth_app_id as string) ||
+        (auth.client_id as string) ||
+        ''
+    );
 };
 
 export const getOAuthRedirectUri = (): string => {
