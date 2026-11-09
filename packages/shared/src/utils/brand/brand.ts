@@ -70,11 +70,11 @@ export const getPlatformDescription = (): string => {
     return ((config_data.platform as Record<string, unknown>).description as string) ?? '';
 };
 
-export const getAppId = (): number => {
+export const getAppId = (): number | string => {
     const app_id = (config_data as Record<string, unknown> & typeof config_data).app_id as
-        | { staging: number; production: number }
+        | { staging: number | string; production: number | string }
         | undefined;
-    if (!app_id) return 118438;
+    if (!app_id) return '34d9nwiSR7YqdcG4P7S6Q';
     return isProduction() ? app_id.production : app_id.staging;
 };
 // [/AI]

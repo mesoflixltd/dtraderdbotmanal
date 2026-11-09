@@ -52,13 +52,13 @@ if (config.brand_logo_dark && !config.brand_logo_dark.endsWith('.svg')) {
     errors.push(`brand_logo_dark must be an SVG file path ending in .svg (got: "${config.brand_logo_dark}")`);
 }
 
-// app_id must be numeric
+// app_id can be numeric or string
 if (config.app_id) {
-    if (typeof config.app_id.staging !== 'number') {
-        errors.push(`app_id.staging must be a number (got: ${typeof config.app_id.staging})`);
+    if (typeof config.app_id.staging !== 'number' && typeof config.app_id.staging !== 'string') {
+        errors.push(`app_id.staging must be a number or string (got: ${typeof config.app_id.staging})`);
     }
-    if (typeof config.app_id.production !== 'number') {
-        errors.push(`app_id.production must be a number (got: ${typeof config.app_id.production})`);
+    if (typeof config.app_id.production !== 'number' && typeof config.app_id.production !== 'string') {
+        errors.push(`app_id.production must be a number or string (got: ${typeof config.app_id.production})`);
     }
     if (config.app_id.staging === 16929 && config.app_id.production === 16929) {
         warnings.push(
