@@ -1,4 +1,4 @@
-import { getAuthBaseUrl, getOAuthAppId, getOAuthClientId, getOAuthRedirectUri } from '@deriv/shared';
+import { getAuthBaseUrl, getOAuthClientId, getOAuthRedirectUri, getOAuthScopes } from '@deriv/shared';
 
 // ---------------------------------------------------------------------------
 // PKCE helpers
@@ -64,13 +64,11 @@ export const generateOAuthURL = async (): Promise<string> => {
         response_type: 'code',
         client_id: getOAuthClientId(),
         redirect_uri: getOAuthRedirectUri(),
-        scope: 'trade',
+        scope: getOAuthScopes(),
         state: csrf_token,
         code_challenge: challenge,
         code_challenge_method: 'S256',
     });
-    const oauth_app_id = getOAuthAppId();
-    if (oauth_app_id) params.set('app_id', oauth_app_id);
 
     return `${getAuthBaseUrl()}/oauth2/auth?${params}`;
 };

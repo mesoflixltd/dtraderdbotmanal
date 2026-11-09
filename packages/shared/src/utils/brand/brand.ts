@@ -186,6 +186,15 @@ export const getOAuthAppId = (): string => {
     );
 };
 
+export const getOAuthScopes = (): string => {
+    const auth = (config_data.auth as Record<string, unknown>) ?? {};
+    const scopes = auth.oauth_scopes as string[] | undefined;
+    if (Array.isArray(scopes) && scopes.length > 0) {
+        return scopes.join(' ');
+    }
+    return 'trade account_manage';
+};
+
 export const getOAuthRedirectUri = (): string => {
     if (typeof window !== 'undefined') {
         if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
