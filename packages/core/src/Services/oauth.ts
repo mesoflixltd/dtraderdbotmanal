@@ -98,7 +98,7 @@ export const exchangeCodeForToken = async (
     if (!response.ok) throw new Error(`Token exchange failed: ${response.status}`);
 
     const data = await response.json();
-    if (process.env.NODE_ENV !== 'production') {
+    if (typeof process !== 'undefined' && process.env?.NODE_ENV !== 'production') {
         // eslint-disable-next-line no-console
         console.log('[OAuth] Token exchange response:', {
             scope: data.scope,

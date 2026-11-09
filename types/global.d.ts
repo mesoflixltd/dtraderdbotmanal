@@ -1,10 +1,15 @@
 declare global {
+    const process: {
+        env: NodeJS.ProcessEnv;
+        [key: string]: unknown;
+    };
     namespace NodeJS {
         interface ProcessEnv {
             OAUTH_CLIENT_ID?: string;
             REF_NAME?: string;
             TRANSLATIONS_CDN_URL?: string;
             NODE_ENV?: string;
+            [key: string]: string | undefined;
         }
     }
     interface Window {

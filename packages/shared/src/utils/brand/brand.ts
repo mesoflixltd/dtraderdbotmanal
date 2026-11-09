@@ -165,8 +165,9 @@ export const getAuthBaseUrl = (): string => {
 
 export const getOAuthClientId = (): string => {
     const auth = (config_data.auth as Record<string, unknown>) ?? {};
+    const env_client_id = typeof process !== 'undefined' ? process.env?.OAUTH_CLIENT_ID : undefined;
     return (
-        (process.env.OAUTH_CLIENT_ID as string) ||
+        (env_client_id as string) ||
         (auth.client_id as string) ||
         (auth.oauth_app_id as string) ||
         ''
@@ -178,8 +179,9 @@ export const getOAuthClientId = (): string => {
  */
 export const getOAuthAppId = (): string => {
     const auth = (config_data.auth as Record<string, unknown>) ?? {};
+    const env_client_id = typeof process !== 'undefined' ? process.env?.OAUTH_CLIENT_ID : undefined;
     return (
-        (process.env.OAUTH_CLIENT_ID as string) ||
+        (env_client_id as string) ||
         (auth.oauth_app_id as string) ||
         (auth.client_id as string) ||
         ''
