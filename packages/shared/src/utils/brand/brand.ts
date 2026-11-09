@@ -200,13 +200,14 @@ export const getOAuthScopes = (): string => {
 export const getOAuthRedirectUri = (): string => {
     if (typeof window !== 'undefined') {
         if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-            return `${window.location.origin}/`;
+            return window.location.origin;
         }
     }
     const auth = config_data.auth as Record<string, unknown>;
-    return isProduction()
+    const uri = isProduction()
         ? ((auth.oauth_redirect_uri_production as string) ?? '')
         : ((auth.oauth_redirect_uri_staging as string) ?? '');
+    return uri.replace(/\/+$/, '');
 };
 
 /**
